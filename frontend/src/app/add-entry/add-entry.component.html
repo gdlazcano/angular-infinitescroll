@@ -1,0 +1,41 @@
+<div class="entry-form" [class.active]="active">
+  <span (click)="toggleActive()" class="entry-form_close">x</span>
+  <form [formGroup]="entryForm" (ngSubmit)="onSubmit()">
+    <input
+      [class.invalid]="
+        entryForm.get('title').touched && entryForm.get('title').invalid
+      "
+      formControlName="title"
+      type="text"
+      placeholder="Title"
+    />
+    <input
+      [class.invalid]="
+        entryForm.get('image').touched && entryForm.get('image').invalid
+      "
+      type="text"
+      formControlName="image"
+      placeholder="Image"
+    />
+    <textarea
+      [class.invalid]="
+        entryForm.get('review').touched && entryForm.get('review').invalid
+      "
+      formControlName="review"
+      placeholder="Content"
+    ></textarea>
+    <input
+      [class.invalid]="
+        entryForm.get('score').touched && entryForm.get('score').invalid
+      "
+      type="number"
+      formControlName="score"
+      placeholder="Score"
+    />
+    <button type="submit" [disabled]="entryForm.invalid">Submit</button>
+  </form>
+</div>
+
+<span (click)="toggleActive()" class="toggle-button material-symbols-outlined">
+  edit</span
+>

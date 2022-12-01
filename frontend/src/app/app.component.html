@@ -1,0 +1,11 @@
+<div
+  class="container"
+  infiniteScroll
+  (scrolled)="onScroll()"
+  [infiniteScrollDistance]="1"
+  [infiniteScrollThrottle]="50"
+>
+  <app-card *ngFor="let review of allReviews" [review]="review"></app-card>
+</div>
+
+<app-add-entry></app-add-entry>

@@ -1,0 +1,85 @@
+<form [formGroup]="editForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="editForm">
+    <div class="card" data-aos="fade-up" data-aos-duration="1000">
+      <div class="card-image">
+        <img src="{{ review.image }}" alt="Avatar" />
+        <div class="card-actions">
+          <span class="material-symbols-outlined" (click)="handleDelete()">
+            delete
+          </span>
+          <span class="material-symbols-outlined" (click)="handleEdit()">
+            edit
+          </span>
+        </div>
+      </div>
+      <div class="card-summary">
+        <div>
+          <div class="card-information_user-information">
+            <span class="card-information_user">Anonymous User</span>
+            <div class="card-information_stars">
+              <span class="material-symbols-outlined" *ngFor="let star of stars"
+                >star</span
+              >
+            </div>
+          </div>
+          <span class="card-information_date"
+            ><span class="material-symbols-outlined">calendar_month</span>Posted
+            on {{ review.created_at | date }}</span
+          >
+        </div>
+        <div class="card-information_summary">
+          <h4 *ngIf="!editMode">{{ review.title }}</h4>
+          <input
+            *ngIf="editMode"
+            [class.invalid]="
+              editForm.get('title').invalid && editForm.get('title').touched
+            "
+            formControlName="title"
+            type="text"
+            placeholder="{{ review.title }}"
+          />
+
+          <p *ngIf="!editMode">
+            {{ review.content }}
+          </p>
+          <textarea
+            *ngIf="editMode"
+            [class.invalid]="
+              editForm.get('content').touched && editForm.get('content').invalid
+            "
+            formControlName="content"
+            placeholder="{{ review.content }}"
+          ></textarea>
+        </div>
+      </div>
+
+      <div class="card-information_review-information">
+        <div class="card-information_score">
+          <h5>Review Score</h5>
+          <span class="card-information_score-review" *ngIf="!editMode">{{
+            review.score
+          }}</span>
+          <input
+            *ngIf="editMode"
+            [class.invalid]="
+              editForm.get('score').touched && editForm.get('score').invalid
+            "
+            formControlName="score"
+            type="text"
+            placeholder="{{ review.score }}"
+          />
+        </div>
+        <div class="card-information_workflow"></div>
+        <div class="card-information_assignees"></div>
+        <button
+          *ngIf="editMode"
+          type="submit"
+          [disabled]="editForm.invalid"
+          class="card-submit"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
