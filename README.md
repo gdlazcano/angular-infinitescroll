@@ -1,6 +1,6 @@
 ## Para correr el backend:
 
-![](https://ik.imagekit.io/gabriellazcano/2022-11-30_16-13-45_7fUq5yufd.mp4)
+[DEMO](https://ik.imagekit.io/gabriellazcano/2022-11-30_16-13-45_7fUq5yufd.mp4)
 
 ### Crear .env con las variables de entorno
 
