@@ -1,11 +1,4 @@
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnInit,
-  ViewChild,
-} from "@angular/core";
+import { Component, Input, OnChanges, OnInit } from "@angular/core";
 import { FormControl, FormGroup, Validators } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 
@@ -15,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./card.component.css"],
 })
 export class CardComponent implements OnChanges, OnInit {
-  @Input() review: any;
+  @Input() review;
   stars: number[];
   editMode = false;
 
@@ -40,6 +33,7 @@ export class CardComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges() {
+    // this.review is available
     this.stars = Array(Math.floor(this.review.score))
       .fill(0)
       .map((x, i) => i);
